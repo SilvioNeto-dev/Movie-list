@@ -19,7 +19,7 @@ searchBtn.addEventListener("click", function(e){
 
 
 async function getMovies(){
-    const getMovies = await fetch(`http://www.omdbapi.com/?s=${searchInput.value}&apikey=${apiKey}`)
+    const getMovies = await fetch(`https://www.omdbapi.com/?s=${searchInput.value}&apikey=${apiKey}`)
     const res = await getMovies.json()
     moviesFromSearch = res.Search
     if (res.Response === "False"){
@@ -32,7 +32,7 @@ async function getMovies(){
         `
     } else {
         for (let movie of moviesFromSearch){
-            const getMovieDetails = await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
+            const getMovieDetails = await fetch(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
             const movieDeetsRes = await getMovieDetails.json()
             movieList.innerHTML += `
                 <div class="movie-cards" data-id="${movieDeetsRes.imdbID}">
@@ -77,7 +77,7 @@ async function getMovies(){
             let savedMovies = moviesFromSearch.find((movie)=>{
                 return movie.imdbID === e.target.closest(".movie-cards").dataset.id
             })
-            const getMovieDetails = await fetch(`http://www.omdbapi.com/?i=${savedMovies.imdbID}&apikey=${apiKey}`)
+            const getMovieDetails = await fetch(`https://www.omdbapi.com/?i=${savedMovies.imdbID}&apikey=${apiKey}`)
             const movieDeetsRes = await getMovieDetails.json()
             let watchlist = JSON.parse(localStorage.getItem("watchlist")) || []
             if (!watchlist.find((movie) => movie.imdbID === savedMovies.imdbID)){
