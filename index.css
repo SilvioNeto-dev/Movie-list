@@ -404,7 +404,7 @@ main svg {
 
     .movies-list{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         padding: 0 20px;
     }
 
@@ -420,6 +420,8 @@ main svg {
 
     .movie-cards img {
         border-radius: 10px;
+        width: 200px;
+        height: 100%;
     }
 
     .movie-cards h1 {
